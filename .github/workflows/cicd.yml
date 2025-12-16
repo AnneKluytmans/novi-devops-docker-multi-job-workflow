@@ -34,12 +34,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Upload coverage
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage
-          path: coverage/
-
       - name: Use secret (test)
         run: |
           echo "Secret length: ${#MY_SECRET}"
@@ -111,4 +105,5 @@ jobs:
       - name: Push Docker Image
         run: |
           docker push $IMAGE_NAME:${{ github.sha }}
+          docker push $IMAGE_NAME:${{ github.ref_name }}
           docker push $IMAGE_NAME:latest
