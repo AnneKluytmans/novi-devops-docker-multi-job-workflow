@@ -2,8 +2,6 @@
 
 ![CI/CD Pipeline](https://github.com/AnneKluytmans/novi-devops-docker-multi-job-workflow/actions/workflows/cicd.yml/badge.svg)
 
-![CI](https://github.com/erikkasimier/novi-devops-2025-11-les-5/actions/workflows/ci.yml/badge.svg)
-
 ## Quick Start
 
 ### Lokaal draaien
