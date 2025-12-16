@@ -1,7 +1,6 @@
 # Les 5 - CD-Ready Pipeline
 
-<!-- TODO: Voeg hier je CI badge toe -->
-<!-- ![CI](https://github.com/JOUW-USERNAME/JOUW-REPO/actions/workflows/ci.yml/badge.svg) -->
+![CI/CD Pipeline](https://github.com/AnneKluytmans/novi-devops-docker-multi-job-workflow/actions/workflows/cicd.yml/badge.svg)
 
 ![CI](https://github.com/erikkasimier/novi-devops-2025-11-les-5/actions/workflows/ci.yml/badge.svg)
 
@@ -34,10 +33,10 @@ docker run -p 3000:3000 novi-devops-2025-11-les-5
 
 ```bash
 # Pull image
-docker pull ghcr.io/JOUW-USERNAME/JOUW-REPO:latest
+docker pull ghcr.io/annekluytmans/my-app:latest
 
 # Run container
-docker run -p 3000:3000 ghcr.io/JOUW-USERNAME/JOUW-REPO:latest
+docker run -p 3000:3000 ghcr.io/annekluytmans/my-app:latest
 ```
 
 ## API Endpoints
@@ -49,6 +48,14 @@ docker run -p 3000:3000 ghcr.io/JOUW-USERNAME/JOUW-REPO:latest
 | GET | `/api/items` | Get all items |
 | GET | `/api/items/:id` | Get item by ID |
 | POST | `/api/items` | Create new item |
+
+## Development
+
+```bash
+npm install
+npm test
+npm start
+```
 
 ## Tests
 

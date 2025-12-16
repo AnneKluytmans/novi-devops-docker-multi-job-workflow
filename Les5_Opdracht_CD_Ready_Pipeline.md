@@ -342,7 +342,6 @@ Tag de image ook met de branch naam:
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
 ```
-
 ---
 
 ## Troubleshooting
