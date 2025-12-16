@@ -40,6 +40,12 @@ jobs:
           name: coverage
           path: coverage/
 
+      - name: Use secret (test)
+        run: |
+          echo "Secret length: ${#MY_SECRET}"
+        env:
+          MY_SECRET: ${{ secrets.MY_SECRET }}
+
 
   build:
     needs: test
