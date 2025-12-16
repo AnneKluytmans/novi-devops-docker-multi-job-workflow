@@ -1,7 +1,6 @@
 # Startpunt CI Workflow
-# TODO: Breid uit naar multi-job workflow met Docker build & push
 
-name: CI
+name: CI/CD Pipeline
 
 on:
   push:
@@ -32,14 +31,13 @@ jobs:
       - name: Run tests
         run: npm test
 
-  # TODO: Voeg build job toe
-  # build:
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   permissions:
-  #     packages: write
-  #   steps:
-  #     - Checkout
-  #     - Login to GHCR
-  #     - Build Docker image
-  #     - Push to GHCR
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t myapp:${{ github.sha }} .
