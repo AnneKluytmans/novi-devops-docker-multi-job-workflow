@@ -32,8 +32,8 @@ RUN addgroup -g 1001 -S nodejs && \
 
 USER nodejs
 
-# Expose de poort
-EXPOSE 3000
+# Expose de poort - Render gebruikt PORT 10000
+EXPOSE 10000
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
