@@ -107,3 +107,20 @@ jobs:
           docker push $IMAGE_NAME:${{ github.sha }}
           docker push $IMAGE_NAME:${{ github.ref_name }}
           docker push $IMAGE_NAME:latest
+
+  deploy:
+    name: Deploy to Render #optional but recommended to describe this step more specific than just deploy
+    needs: push
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Trigger Render Deploy
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
+          echo "Deployment triggered!"
+
+      - name: Wait for deployment
+        run: |
+          echo "Deployment started. Check Render dashboard for status."
+          echo "URL: https://devops-app-anne-kluytmans.onrender.com"

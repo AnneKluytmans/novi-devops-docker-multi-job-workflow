@@ -56,7 +56,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server (only if not in test mode)
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
