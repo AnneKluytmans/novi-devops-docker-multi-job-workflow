@@ -120,7 +120,16 @@ jobs:
           curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
           echo "Deployment triggered!"
 
-      - name: Wait for deployment
+      - name: Wait for deployment to be live
         run: |
-          echo "Deployment started. Check Render dashboard for status."
-          echo "URL: https://devops-app-anne-kluytmans.onrender.com"
+          echo "Waiting for deployment..."
+          for i in {1..10}; do
+            if curl -f https://devops-app-anne-kluytmans.onrender.com/health; then
+              echo "Deployment successful!"
+              exit 0
+            fi
+            echo "Not ready yet... retrying in 10s"
+            sleep 10
+          done
+          echo "Deployment failed"
+          exit 1
