@@ -103,7 +103,7 @@ jobs:
 
   deploy:
     name: Deploy to Render #optional but recommended to describe this step more specific than just deploy
-    needs: push
+    needs: build-and-push
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
 
