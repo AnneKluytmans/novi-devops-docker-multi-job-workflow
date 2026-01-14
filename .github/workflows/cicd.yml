@@ -98,6 +98,17 @@ jobs:
           name: npm-audit-report-node-${{ matrix.node-version }}
           path: npm-audit.json
 
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - uses: github/codeql-action/analyze@v3
+
   build-and-push:
     name: Build and Push Docker Image
     needs: [lint, test, security-audit]
