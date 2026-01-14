@@ -87,8 +87,7 @@ jobs:
         run: npm ci
 
       - name: Run npm audit
-        run: npm audit --audit-level=high
-        continue-on-error: true
+        run: npm audit --audit-level=high || true
 
       - name: Save audit report
         run: npm audit --json > npm-audit.json || true
@@ -96,12 +95,12 @@ jobs:
       - name: Upload audit report
         uses: actions/upload-artifact@v4
         with:
-          name: npm-audit-report
+          name: npm-audit-report-node-${{ matrix.node-version }}
           path: npm-audit.json
 
   build-and-push:
     name: Build and Push Docker Image
-    needs: [lint, test]
+    needs: [lint, test, security-audit]
     runs-on: ubuntu-latest
 
     permissions:
