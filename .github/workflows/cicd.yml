@@ -200,7 +200,7 @@ jobs:
   deploy-staging:
     name: Deploy to Staging
     runs-on: ubuntu-latest
-    needs: [ container-scan ]
+    needs: [build-and-push, container-scan]
     # if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
     environment: staging
 
@@ -214,7 +214,7 @@ jobs:
   deploy-production:
     name: Deploy to Production
     runs-on: ubuntu-latest
-    needs: [container-scan]
+    needs: [build-and-push, container-scan]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment: production
 
@@ -227,16 +227,16 @@ jobs:
 
       - name: Wait for deployment to be live
         run: |
-          echo "Waiting for deployment..."
+          echo "⏳ Waiting for deployment..."
           for i in {1..10}; do
             if curl -f https://devops-app-anne-kluytmans.onrender.com/health; then
-              echo "Deployment successful!"
+              echo "🏆 Deployment successful!"
               exit 0
             fi
-            echo "Not ready yet... retrying in 10s"
+            echo "🔄 Not ready yet... retrying in 10s"
             sleep 10
           done
-          echo "Deployment failed"
+          echo "❌ Deployment failed"
           exit 1
 
       - name: Notify deployment
