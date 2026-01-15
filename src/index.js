@@ -8,7 +8,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.json({
     message: 'Welcome to the Les 6 API!',
-    version: process.env.APP_VERSION || '1.1.0',
+    version: process.env.APP_VERSION || '1.2.0',
     environment: process.env.NODE_ENV || 'development'
   });
 });
