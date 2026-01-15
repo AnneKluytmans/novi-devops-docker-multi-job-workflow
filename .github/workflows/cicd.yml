@@ -35,6 +35,7 @@ jobs:
 
       - name: Run linter
         run: npm run lint
+        #in package json heb ik "eslint src tests/" vervangen met "eslint src/ --ext .js,.ts"
 
   test:
     name: Unit Tests
@@ -159,8 +160,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          dockerfile: Dockerfile
-          target: production
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
