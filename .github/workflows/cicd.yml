@@ -35,7 +35,6 @@ jobs:
 
       - name: Run linter
         run: npm run lint
-        #in package json heb ik "eslint src tests/" vervangen met "eslint src/ --ext .js,.ts"
 
   test:
     name: Unit Tests
