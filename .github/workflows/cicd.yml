@@ -245,7 +245,7 @@ jobs:
       - name: Notify deployment
         run: |
           echo "=========================================="
-          echo "✅ DEPLOYMENT COMPLETE"
+          echo "✅ DEPLOYMENT COMPLETE!!"
           echo "=========================================="
           echo "Branch: ${{ github.ref_name }}"
           echo "Commit: ${{ github.sha }}"
